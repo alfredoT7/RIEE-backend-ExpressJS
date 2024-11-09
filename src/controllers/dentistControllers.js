@@ -40,3 +40,15 @@ exports.createDentist = async (req,res)=>{
         res.status(400).json({message: "Error al crear dentista", error: err.message});
     }
 }
+exports.getDentistByCI = async (req,res)=>{
+    const { ci } = req.params;
+    try{
+        const dentist = await UserDentist.findOne({ ci });
+        if(!dentist){
+            return res.status(400).json({message: "CI no encontrado"});
+        }
+        res.status(200).json(dentist);
+    }catch(err){
+        res.status(400).json({message: "Error al obtener dentista, intenta de nuevo", error: err.message});
+    }
+}
