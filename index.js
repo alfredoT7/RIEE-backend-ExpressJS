@@ -24,5 +24,3 @@ mongoose.connect(mongoURL, {}).then(() => {
 app.listen(3000, () => {
     console.log(`API corriendo ${port}`);
 });
-
-
